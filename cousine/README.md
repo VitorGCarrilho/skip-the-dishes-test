@@ -1,12 +1,9 @@
-#Skip the dishes Test
+#Skip the dishes challenge
 
-##JAVA
+##cousine
 
-Build an API to:
-1.  Allow Authentication;
-2.  Query Products;
-3.	Receive Orders;
-4.	Cancel an Order;
-5.	Get Order Status;
-6.	Store data in a database of his/her choice;
+	This service interface was previously defined by the challenge owner:
 
+		GET /api/v1/cousine
+		GET /api/v1/Cousine/search/{searchText}
+		GET /api/v1/Cousine/{cousineId}/stores
