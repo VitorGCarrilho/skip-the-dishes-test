@@ -1,5 +1,7 @@
 package com.skipthedishes.domain;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -17,7 +19,10 @@ import org.hibernate.validator.constraints.NotEmpty;
  */
 @Entity
 @Table(name="STORE")
-public class Store {
+public class Store implements Serializable {
+	
+	private static final long serialVersionUID = -8350731525487723791L;
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="ID")

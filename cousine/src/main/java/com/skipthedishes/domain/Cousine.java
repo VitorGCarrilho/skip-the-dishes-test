@@ -1,5 +1,6 @@
 package com.skipthedishes.domain;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -23,8 +24,14 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
  */
 @Entity
 @Table(name="COUSINE")
-public class Cousine {
+public class Cousine implements Serializable {
 	
+	/**
+	 * 
+	 */
+	
+	private static final long serialVersionUID = -4704087930822194692L;
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="ID")
