@@ -1,30 +1,23 @@
 package com.skipthedishes.domain;
 
-import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 /**
  * @author Vitor Carrilho - 18/03/2018
  *
  */
 @Entity
-@Table(name="COUSINE")
-public class Cousine {
-	
+@Table(name="STORE")
+public class Store {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="ID")
@@ -36,11 +29,14 @@ public class Cousine {
 	@Column(name="NAME")
 	private String name;
 	
-	@OneToMany
-	@JoinColumn(name = "COUSINE_ID")
-	@JsonIgnore
-	private List<Store> storeList;
+	@NotNull
+	@NotEmpty
+	@Size(min=2, max=500)
+	@Column(name="ADDRESS")
+	private String address;
 	
+	@Column(name="COUSINE_ID")
+	private long cousineId;
 
 	public long getId() {
 		return id;
@@ -49,8 +45,13 @@ public class Cousine {
 	public String getName() {
 		return name;
 	}
-	
-	public List<Store> getStoreList() {
-		return storeList;
+
+	public String getAddress() {
+		return address;
 	}
+	
+	public long getCousineId() {
+		return cousineId;
+	}
+		
 }

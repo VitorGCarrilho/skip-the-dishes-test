@@ -14,4 +14,6 @@ import com.skipthedishes.domain.Cousine;
 @Repository
 public interface CousineRepository extends JpaRepository<Cousine, Long> {
 	Optional<Cousine> findByName(String name);
+	
+	Optional<Cousine> findById(long id);
 }

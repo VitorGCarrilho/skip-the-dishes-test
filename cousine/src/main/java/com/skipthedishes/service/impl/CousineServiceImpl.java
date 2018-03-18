@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.skipthedishes.domain.Cousine;
+import com.skipthedishes.domain.Store;
 import com.skipthedishes.exception.NotFoundException;
 import com.skipthedishes.repository.CousineRepository;
 import com.skipthedishes.service.CousineService;
@@ -25,7 +26,8 @@ public class CousineServiceImpl implements CousineService {
 	private CousineRepository cousineRepository;
 
 	/*
-	 * @see com.skipthedishes.service.CousineService#findByName(java.lang.String)
+	 * @see
+	 * com.skipthedishes.service.CousineService#findByName(java.lang.String)
 	 */
 	@Override
 	public Cousine findByName(String name) {
@@ -45,6 +47,20 @@ public class CousineServiceImpl implements CousineService {
 		List<Cousine> cousineList = cousineRepository.findAll();
 		logger.debug("Searching for all cousines");
 		return cousineList;
+	}
+
+	/*
+	 * @see com.skipthedishes.service.CousineService#findAllStores(long)
+	 */
+	@Override
+	public List<Store> findAllStoresByCousineId(long id) {
+		Optional<Cousine> optCousine = cousineRepository.findById(id);
+		logger.debug("Searching stores related to cousine "+id);
+		Cousine cousine = optCousine.orElseThrow(() -> {
+			logger.debug("Cousine {} not found", id);
+			return new NotFoundException("The cousine wasn't found");
+		});
+		return cousine.getStoreList();
 	}
 
 	@Autowired

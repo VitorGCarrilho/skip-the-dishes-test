@@ -3,6 +3,7 @@ package com.skipthedishes.service;
 import java.util.List;
 
 import com.skipthedishes.domain.Cousine;
+import com.skipthedishes.domain.Store;
 
 /**
  * @author Vitor Carrilho - 18/03/2018
@@ -21,4 +22,11 @@ public interface CousineService {
 	 * @return
 	 */
 	List<Cousine> findAll();
+
+	/**
+	 * Method that finds all stores related to a Cousine
+	 * @param id
+	 * @return
+	 */
+	List<Store> findAllStoresByCousineId(long id);
 }

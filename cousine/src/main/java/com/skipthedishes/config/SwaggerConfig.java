@@ -19,7 +19,7 @@ public class SwaggerConfig {
     public Docket api() { 
         return new Docket(DocumentationType.SWAGGER_2) 
           .select()                                  
-          .apis(RequestHandlerSelectors.basePackage("com.shippingcompany.deliverymanager.resource"))  
+          .apis(RequestHandlerSelectors.basePackage("com.skipthedishes.resource"))  
           .paths(regex("/api.*"))                     
           .build()
           .apiInfo(metaData());
